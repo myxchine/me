@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center justify-center p-4 px-8 max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto">
+    <div className="flex flex-col items-center justify-center ">
       <Image
         src="/images/hero.webp"
         alt="hero"
@@ -15,10 +15,13 @@ const Hero = () => {
         priority
       />
 
-      <div className="w-full text-center space-y-4 py-8">
+      <div className="w-full text-center space-y-4 p-4">
         <h1 className="text-2xl font-bold">BRINGING SPEED & EFFIECENCY</h1>
+        <p className="text-sm px-4 text-center text-black text-opacity-50">
+          The digital commerce solution you've been looking for
+        </p>
 
-        <div className="flex space-x-4 items-center justify-center  w-full">
+        <div className="flex space-x-4 items-center justify-center  w-full p-4">
           <Link href="/home/store">
             <button className="border border-black bg-black p-2 w-[120px] text-sm text-white hover:bg-white hover:text-black">
               SHOP
