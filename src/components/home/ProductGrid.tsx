@@ -9,12 +9,14 @@ import Link from "next/link";
 interface ProductGrid {
   number: number;
   loading: boolean;
+  text: string;
   setLoading: () => boolean;
 }
 
 const ProductGrid: React.FC<ProductGrid> = ({
   number,
   loading,
+  text,
   setLoading,
 }) => {
   const [products, setProducts] = useState([]);
@@ -38,7 +40,7 @@ const ProductGrid: React.FC<ProductGrid> = ({
     <>
       {!loading && (
         <div className="p-4 max-w-4xl mx-auto space-y-4">
-          <h3 className="font-bold text-xl">Featured</h3>
+          <h3 className="font-bold text-xl">{text}</h3>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 max-w-4xl mx-auto">
             {products.map((product: Product) => (
