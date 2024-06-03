@@ -3,9 +3,10 @@
 import { Product } from "@/server/interface";
 
 const Cart = () => {
-  const currentCart: Product[] = JSON.parse(
-    localStorage.getItem("cart") || "[]"
-  );
+  let currentCart: Product[] = [];
+  if (typeof window !== "undefined" && window.localStorage) {
+    currentCart = JSON.parse(localStorage.getItem("cart") || "[]");
+  }
 
   return (
     <main className="flex flex-col items-center justify-center p-8">

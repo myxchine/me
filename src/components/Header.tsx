@@ -36,13 +36,13 @@ const Header = () => {
           <Nav />
         </div>
 
-        <Link href="/">
+        <Link href="/store">
           <div className="text-2xl md:text-2xl font-bold uppercase flex items-center absolute top-3 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             DUALITY
           </div>
         </Link>
 
-        <Link href="/cart">
+        <Link href="/store/cart">
           <div>
             <PiBagLight className="text-2xl" />
           </div>
