@@ -42,7 +42,7 @@ const ProductGrid: React.FC<ProductGrid> = ({
   return (
     <>
       {!loading && (
-        <div className="p-4 max-w-4xl mx-auto space-y-4">
+        <div className="p-8 max-w-4xl mx-auto space-y-4">
           <h3 className="font-bold text-xl">{text}</h3>
 
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 max-w-4xl mx-auto">
