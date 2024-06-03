@@ -50,11 +50,11 @@ const Header = () => {
           <Nav />
         </div>
 
-        <Link href="/store">
+        <Link href="/home">
           <div className="font-bold text-xl">DUALITY</div>
         </Link>
         <div className="md:w-[310px] flex items-center justify-end">
-          <Link href="/store/cart">
+          <Link href="/home/cart">
             <button
               aria-label="Shopping Cart"
               className="flex items-right justify-right p-2 "
