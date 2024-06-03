@@ -108,7 +108,7 @@ const Cart = () => {
                 </ul>
                 {product.quantity === 0 && (
                   <button
-                    className="p-2 bg-black text-white hover:bg-white hover:text-black text-sm border rounded  w-full"
+                    className="p-2 mb-4 bg-black text-white hover:bg-white hover:text-black text-sm border rounded  w-full"
                     onClick={() => removeFromCart(product.id)}
                   >
                     Remove

@@ -45,7 +45,7 @@ const ProductGrid: React.FC<ProductGrid> = ({
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 max-w-4xl mx-auto">
             {products.map((product: Product) => (
               <div key={product.id} className="">
-                <Link href={`home/store/product/${product.slug}`}>
+                <Link href={`/home/store/product/${product.slug}`}>
                   <div>
                     <Image
                       width={200}
