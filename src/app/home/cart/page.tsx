@@ -29,8 +29,57 @@ const Cart = () => {
     }
   }, []);
 
+  const removeFromCart = (productId: number) => {
+    const updatedCart = currentCart.filter(
+      (product) => product.id !== productId
+    );
+    updateCart(updatedCart);
+  };
+
+  const decreaseQuantity = (productId: number) => {
+    const updatedCart = currentCart.map((product) => {
+      if (product.id === productId) {
+        const newQuantity = Math.max(0, product.quantity - 1);
+        return { ...product, quantity: newQuantity };
+      }
+      return product;
+    });
+    updateCart(updatedCart);
+  };
+
+  const increaseQuantity = (productId: number) => {
+    const updatedCart = currentCart.map((product) => {
+      if (product.id === productId) {
+        const newQuantity = product.quantity + 1;
+        return { ...product, quantity: newQuantity };
+      }
+      return product;
+    });
+    updateCart(updatedCart);
+  };
+
+  const updateCart = (updatedCart: Product[]) => {
+    setCurrentCart(updatedCart);
+    const totalQuantity = updatedCart.reduce(
+      (acc: number, product: Product) => acc + (product.quantity || 0),
+      0
+    );
+    setTotalQuantity(totalQuantity);
+
+    const totalPrice = updatedCart.reduce(
+      (acc: number, product: Product) => acc + product.quantity * product.price,
+      0
+    );
+    setTotalPrice(totalPrice);
+    updateLocalStorage(updatedCart);
+  };
+
+  const updateLocalStorage = (cart: Product[]) => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
+
   return (
-    <main className="flex flex-col items-center justify-center p-8">
+    <main className="flex flex-col items-center justify-center p-8 max-w-6xl mx-auto">
       <div className="w-full block space-y-4">
         <h1 className="text-xl font-bold uppercase">Cart</h1>
 
@@ -39,10 +88,32 @@ const Cart = () => {
         ) : (
           <ul>
             {currentCart.map((product) => (
-              <li key={product.id}>
-                <ul className="w-full block space-y-4">
+              <li key={product.id} className="w-full">
+                <ul className="w-full flex  mb-4">
                   <ProductElement product={product} />
+                  <div className=" flex flex-col justify-between items-center items-middle align-middle">
+                    <button
+                      className="p-2 mt-4  bg-black text-white hover:bg-white hover:text-black  text-xl border rounded w-[40px] justify-center"
+                      onClick={() => increaseQuantity(product.id)}
+                    >
+                      +
+                    </button>
+                    <button
+                      className="p-2 mb-4 bg-black text-white hover:bg-white hover:text-black text-xl border rounded  w-[40px]"
+                      onClick={() => decreaseQuantity(product.id)}
+                    >
+                      -
+                    </button>
+                  </div>
                 </ul>
+                {product.quantity === 0 && (
+                  <button
+                    className="p-2 bg-black text-white hover:bg-white hover:text-black text-sm border rounded  w-full"
+                    onClick={() => removeFromCart(product.id)}
+                  >
+                    Remove
+                  </button>
+                )}
               </li>
             ))}
           </ul>

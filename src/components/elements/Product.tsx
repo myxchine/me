@@ -3,14 +3,14 @@ import Image from "next/image";
 
 const ProductComponent: React.FC<{ product: Product }> = ({ product }) => {
   return (
-    <div className="flex w-full jsut-between items-center space-x-8 mb-4">
+    <div className="flex w-full jsut-between items-center space-x-8">
       <Image
         width={50}
         height={100}
         src={product.image}
         alt={product.name}
         priority={true}
-        className="w-[150px] h-auto"
+        className="w-[250px] h-auto border"
       />
       <div className="my-4 text-sm font-medium text-gray-900 w-full">
         <p>{product.name}</p>
