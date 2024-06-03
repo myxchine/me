@@ -20,7 +20,6 @@ const Skeleton: React.FC<SkeletonProps> = ({ number }) => {
             <p className="h-[20px] bg-black bg-opacity-10 animate-pulse" />
             <p className="h-[20px] bg-black bg-opacity-10 animate-pulse" />
           </div>
-          <button className="h-[34px] pb-0 mb-0 w-full bg-black bg-opacity-10 animate-pulse" />
         </div>
       ))}
     </div>

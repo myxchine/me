@@ -10,11 +10,20 @@ export const getProducts = async (limit: number) => {
       .order("created_at", { ascending: false })
       .limit(limit);
 
-    console.log("Products fetched:", data);
-
     return data;
   } catch (error) {
     console.error("Error fetching products:", error);
+    throw error;
+  }
+};
+
+export const getProduct = async (slug: string) => {
+  try {
+    const data = await db.from("products").select("*").eq("slug", slug);
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching product:", error);
     throw error;
   }
 };

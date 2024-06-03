@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex flex-col  sticky top-0 z-10  border-b border-blac border-opacity-30 bg-white px-4 md:p-4 md:px-8">
+    <header className="flex flex-col  sticky top-0 z-10   bg-white px-4 md:p-4 md:px-8">
       <div className="flex items-center justify-between relative">
         <div className="mobile flex items-left justify-left md:hidden">
           {!isOpen && (

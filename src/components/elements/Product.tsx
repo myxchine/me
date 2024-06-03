@@ -1,32 +1,23 @@
 import { Product } from "@/server/interface";
+import Image from "next/image";
 
 const ProductComponent: React.FC<{ product: Product }> = ({ product }) => {
   return (
-    <div>
-      <h2>Product</h2>
-      <ul>
-        <li>
-          <strong>ID:</strong> {product.id}
-        </li>
-        <li>
-          <strong>Name:</strong> {product.name}
-        </li>
-        <li>
-          <strong>Description:</strong> {product.description}
-        </li>
-        <li>
-          <strong>Price:</strong> {product.price}
-        </li>
-        <li>
-          <strong>Image:</strong> {product.image}
-        </li>
-        <li>
-          <strong>Category:</strong> {product.category}
-        </li>
-        <li>
-          <strong>Stock:</strong> {product.stock}
-        </li>
-      </ul>
+    <div className="flex w-full jsut-between items-center space-x-8 mb-4">
+      <Image
+        width={50}
+        height={100}
+        src={product.image}
+        alt={product.name}
+        priority
+        className="w-[150px] h-auto "
+      />
+      <div className="my-4 text-sm font-medium text-gray-900 w-full">
+        <p>{product.name}</p>
+
+        <p>${product.price.toFixed(2)}</p>
+        <p>x{product.quantity}</p>
+      </div>
     </div>
   );
 };
