@@ -14,7 +14,7 @@ const NewsletterSignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-8">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-8 max-w-xl">
       <h3 className="text font-bold w-full  text-left">SIGN UP </h3>
       <div>
         <input

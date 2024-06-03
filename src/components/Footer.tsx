@@ -26,7 +26,7 @@ const Footer = () => {
       </div>
 
       <div>
-        <p className="text-sm border-t border-gray-300 text-center p-4">
+        <p className="text-xs md:text-sm border-t border-gray-300 text-center p-4">
           © 2024 DUALITY COMMERCE.
         </p>
       </div>

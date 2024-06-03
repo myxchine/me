@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "@/server/interface";
 import ProductElement from "@/components/elements/Product";
+import Link from "next/link";
 
 const Cart = () => {
   const [currentCart, setCurrentCart] = useState<Product[]>([]);
@@ -122,9 +123,14 @@ const Cart = () => {
         <div>
           <p>Total items: {totalQuantity}</p>
           <p>Total price: ${totalPrice.toFixed(2)}</p>
-          <button className="bg-black border text-white p-2 w-full mt-4 hover:bg-white hover:text-black">
+          <button className="bg-black border border-black text-white p-2 w-full mt-4 hover:bg-white hover:text-black">
             Checkout
           </button>
+          <Link href="/home/store">
+            <button className="bg-white border border-black text-black p-2 w-full mt-4 hover:bg-black hover:text-white">
+              Continue Shopping
+            </button>
+          </Link>
         </div>
       </div>
     </main>

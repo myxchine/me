@@ -23,11 +23,14 @@ const ProductGrid: React.FC<ProductGrid> = ({
 
   useEffect(() => {
     const fetchProducts = async () => {
+      const start = performance.now();
       try {
         const productsData = await getProducts(number);
         console.log("Products", productsData);
         setProducts(productsData.data);
         setLoading(false);
+        const end = performance.now();
+        console.log("Fetched products in", end - start, "ms");
       } catch (error) {
         console.error("Error fetching products:", error);
       }

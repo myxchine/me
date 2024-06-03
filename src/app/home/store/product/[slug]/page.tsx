@@ -5,10 +5,13 @@ import { getProduct } from "@/server/queries";
 import { Product } from "@/server/interface";
 import AddToCart from "@/components/AddToCart";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -43,7 +46,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
     try {
       const response = AddToCart(product);
+
       console.log(response);
+
+      router.push("/home/cart");
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }
@@ -89,7 +95,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         <p className="text-l body-inter mt-4">{product.price.toFixed(2)} EUR</p>
         <button
           onClick={() => handleAddToCart(product)}
-          className="body-inter text mt-6 w-full border border-black bg-black p-4 text-white"
+          className="body-inter text mt-6 w-full border border-black bg-black p-4 text-white hover:bg-white hover:text-black"
         >
           ADD TO CART
         </button>

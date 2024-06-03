@@ -5,8 +5,8 @@ const ProductComponent: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <div className="flex w-full jsut-between items-center space-x-8">
       <Image
-        width={50}
-        height={100}
+        width={100}
+        height={200}
         src={product.image}
         alt={product.name}
         priority={true}
