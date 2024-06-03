@@ -12,7 +12,7 @@ const Skeleton: React.FC<SkeletonProps> = ({ number }) => {
   });
 
   return (
-    <div className="p-4 max-w-4xl mx-auto space-y-4">
+    <div className="p-8 max-w-4xl mx-auto space-y-4">
       <h3 className="h-[28px] bg-black bg-opacity-10 animate-pulse w-[120px]"></h3>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 max-w-4xl mx-auto">
         {loadingProducts.map((_, index: number) => (
