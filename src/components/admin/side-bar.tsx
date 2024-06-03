@@ -27,7 +27,7 @@ const Sidebar = () => {
           </li>
           <li
             className="py-2  cursor-pointer flex items-center"
-            onClick={() => navigate("/admin/manage")}
+            onClick={() => navigate("/admin")}
           >
             <TbLogs className="text-2xl mr-4" /> PRODUCTS
           </li>

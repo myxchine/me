@@ -6,6 +6,8 @@ import { Product } from "@/server/interface";
 import AddToCart from "@/components/AddToCart";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { IoArrowBackOutline } from "react-icons/io5";
+import Link from "next/link";
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const [product, setProduct] = useState<Product | null>(null);
@@ -61,22 +63,32 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   if (!product) {
     return (
-      <main className="max-w-xl mx-auto px-4 py-8">
+      <main className="max-w-xl mx-auto px-4 py-4">
+        <Link href="/home">
+          <button className="flex items-center pl-4">
+            <IoArrowBackOutline className="text-2xl" />
+          </button>
+        </Link>
         <div className="px-4 py-8">
-          <div className="mb-4 h-[350px] bg-black bg-opacity-10 animate-pulse"></div>
+          <div className="mb-4 h-[350px] bg-black bg-opacity-30 animate-pulse"></div>
 
-          <div className="h-[32px] bg-black bg-opacity-10 animate-pulse mt-8"></div>
+          <div className="h-[32px] bg-black bg-opacity-20 animate-pulse mt-8"></div>
 
           <div className="h-[24px] bg-black bg-opacity-10 animate-pulse w-[200px]  mt-4"></div>
 
-          <div className="h-[58px] mt-6 bg-black bg-opacity-10 animate-pulse w-full"></div>
+          <div className="h-[58px] mt-6 bg-black bg-opacity-20 animate-pulse w-full"></div>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="max-w-xl mx-auto px-4 py-8">
+    <main className="max-w-xl mx-auto px-4 py-4">
+      <Link href="/home">
+        <button className="flex items-center pl-4">
+          <IoArrowBackOutline className="text-2xl" />
+        </button>
+      </Link>
       <div className="px-4 py-8">
         <Image
           src={product.image}
@@ -90,7 +102,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             objectFit: "cover",
           }}
         />
-        <h1 className="body-inter mt-8 text-2xl uppercase">{product.name}</h1>
+        <h1 className="body-inter mt-8 text-2xl ">{product.name}</h1>
 
         <p className="text-l body-inter mt-4">{product.price.toFixed(2)} EUR</p>
         <button

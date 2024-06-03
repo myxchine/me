@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { TfiClose } from "react-icons/tfi";
 import { PiBagLight } from "react-icons/pi";
 import MobileMenu from "@/components/menu/Mobile";
 import Nav from "@/components/menu/Nav";
 import Link from "next/link";
+import { Product } from "@/server/interface";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [quantity, setQuantity] = useState(0);
 
   const handleOpen = () => {
     setIsOpen(true);
@@ -20,6 +22,18 @@ const Header = () => {
     setIsOpen(false);
     document.body.classList.remove("no-scroll");
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+      const totalQuantity = storedCart.reduce(
+        (acc: number, product: Product) => acc + (product.quantity || 0),
+        0
+      );
+      setQuantity(totalQuantity);
+    }
+  }, []);
 
   return (
     <header className="flex flex-col  sticky top-0 z-10   bg-white px-4 md:p-4 max-w-[1600px] mx-auto">
@@ -57,9 +71,14 @@ const Header = () => {
           <Link href="/home/cart">
             <button
               aria-label="Shopping Cart"
-              className="flex items-right justify-right p-2 "
+              className="flex items-right justify-right p-2 relative"
             >
-              <PiBagLight className="text-2xl" />
+              {quantity > 0 && (
+                <div className="w-[24px] h-[24px font-bold border-b border-black">
+                  {quantity}
+                </div>
+              )}
+              {quantity === 0 && <PiBagLight className="text-2xl" />}
             </button>
           </Link>
         </div>

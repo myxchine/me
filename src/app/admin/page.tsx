@@ -6,6 +6,7 @@ import { getProducts } from "@/server/queries";
 import { FiTrash } from "react-icons/fi";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { Product } from "@/server/interface";
+import Link from "next/link";
 
 const MainView: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -57,12 +58,14 @@ const MainView: React.FC = () => {
             <h1 className="text-xl font-bold uppercase">Products</h1>
           </div>
           <div className="space-x-4">
-            <button className="text-black text-opacity-100 hover:text-red rounded border border-gray-300 p-2">
-              <div className="flex justify-center items-center space-x-2">
-                <IoMdAddCircleOutline />
-                <p className="text-xs">New Product</p>
-              </div>
-            </button>
+            <Link href="/admin/newproduct">
+              <button className="text-black text-opacity-100 hover:text-red rounded border border-gray-300 p-2">
+                <div className="flex justify-center items-center space-x-2">
+                  <IoMdAddCircleOutline />
+                  <p className="text-xs">New Product</p>
+                </div>
+              </button>
+            </Link>
             {selectedProducts.length > 0 && (
               <button
                 className="text-black text-opacity-100 hover:text-red rounded border border-gray-300 p-2"
@@ -79,7 +82,7 @@ const MainView: React.FC = () => {
             )}
           </div>
 
-          <div className="min-h-[400px] border border-gray-300 rounded-lg overflow-hidden">
+          <div className=" border border-gray-300 rounded-lg overflow-hidden">
             <table className="table-auto w-full space-y-4 border border-gray-300 p-4 rounded-lg overflow-hidden">
               <thead className="border-b border-gray-300 p-4 rounded-t-lg">
                 <tr className="text-left">

@@ -24,14 +24,14 @@ const NewsletterSignupForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
           placeholder="Enter your email"
-          className="border border-gray-400 r px-2 py-1 w-full"
+          className="border border-gray-400 r px-2 py-1 w-full rounded-none"
         />
       </div>
       <button
         type="submit"
         className="bg-black border text-white px-4 py-2 hover:bg-white hover:text-black text-sm "
       >
-        SUBMIT
+        Submit
       </button>
     </form>
   );

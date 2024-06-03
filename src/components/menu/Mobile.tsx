@@ -1,7 +1,7 @@
 const MobileMenu = () => {
   return (
-    <div className="h-screen w-screen fixed top-[45px] left-0 z-50 bg-white bg-opacity-100 backdrop-blur">
-      <nav className="p-4 ">
+    <div className="h-screen w-screen fixed top-[41px] left-0 z-50 bg-white bg-opacity-100 backdrop-blur">
+      <nav className="p-4 pl-8">
         <ul className=" space-y-6">
           <li className="">
             <a href="#home">Home</a>
