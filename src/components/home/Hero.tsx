@@ -3,12 +3,14 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center justify-center p-4 space-y-4 max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto">
+    <div className="flex flex-col items-center justify-center p-4 px-8 max-w-4xl md:max-w-5xl lg:max-w-6xl mx-auto">
       <Image
         src="/images/hero.webp"
         alt="hero"
         width={700}
+        quality={50}
         height={500}
+        placeholder="empty"
         className="h-[300px] md:h-[400px] lg:h-[500px] w-full object-cover"
         priority
       />
