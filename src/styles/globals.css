@@ -5,3 +5,7 @@
 .sidebar {
   height: 100svh;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

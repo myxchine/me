@@ -5,7 +5,6 @@ import { getProducts } from "@/server/queries";
 import { Product } from "@/server/interface";
 import Image from "next/image";
 import AddToCart from "../AddToCart";
-import Skeleton from "./Skeleton";
 
 interface ProductGrid {
   number: number;
@@ -49,7 +48,7 @@ const ProductGrid: React.FC<ProductGrid> = ({
   return (
     <>
       {!loading && (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 p-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-2 p-4 max-w-4xl mx-auto">
           {products.map((product: Product) => (
             <div key={product.id} className="mb-[6.5px]">
               <Image

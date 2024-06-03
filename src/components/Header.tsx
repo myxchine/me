@@ -12,41 +12,57 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(true);
+    document.body.classList.add("no-scroll");
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    document.body.classList.remove("no-scroll");
   };
 
   return (
-    <header className="flex flex-col  sticky top-0 z-10 p-2 md:p-4 border-b border-gray-300 bg-white px-4">
+    <header className="flex flex-col  sticky top-0 z-10  border-b border-blac border-opacity-30 bg-white px-4 md:p-4 md:px-8">
       <div className="flex items-center justify-between relative">
         <div className="mobile flex items-left justify-left md:hidden">
           {!isOpen && (
-            <button aria-label="Mobile Menu Open" onClick={handleOpen}>
-              <HiOutlineMenuAlt4 className=" text-xl h-[28px] flex items-left justify-left" />
+            <button
+              aria-label="Mobile Menu Open"
+              onClick={handleOpen}
+              className="flex items-center justify-center p-2"
+            >
+              <HiOutlineMenuAlt4 className=" text-xl h-[24px] w-[24px] flex items-left justify-left" />
             </button>
           )}
 
           {isOpen && (
-            <button aria-label="Mobile Menu Close" onClick={handleOpen}>
-              <TfiClose className="text-xl h-[28px]" />
+            <button
+              aria-label="Mobile Menu Close"
+              className="flex items-center justify-center p-2"
+              onClick={handleClose}
+            >
+              <TfiClose className="p-[3px] text-xl h-[24px] w-[24px] flex items-left justify-left" />
             </button>
           )}
         </div>
 
-        <div className="flex items-center justify-between hidden md:flex">
+        <div className="flex items-center justify-between hidden md:flex md:w-[310px]">
           <Nav />
         </div>
 
         <Link href="/store">
-          <div className="text-2xl md:text-2xl font-bold uppercase flex items-center absolute top-3 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            DUALITY
-          </div>
+          <div className="font-bold text-xl">DUALITY</div>
         </Link>
-
-        <Link href="/store/cart">
-          <button aria-label="Shopping Cart">
-            <PiBagLight className="text-2xl" />
-          </button>
-        </Link>
+        <div className="md:w-[310px] flex items-center justify-end">
+          <Link href="/store/cart">
+            <button
+              aria-label="Shopping Cart"
+              className="flex items-right justify-right p-2 "
+            >
+              <PiBagLight className="text-2xl" />
+            </button>
+          </Link>
+        </div>
       </div>
       {isOpen && <MobileMenu />}
     </header>
