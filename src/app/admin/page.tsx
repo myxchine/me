@@ -5,9 +5,10 @@ import { deleteProduct } from "@/server/utils";
 import { getProducts } from "@/server/queries";
 import { FiTrash } from "react-icons/fi";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import { Product } from "@/server/interface";
 
-const MainView = () => {
-  const [products, setProducts] = useState<any[]>([]);
+const MainView: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
 
   const toggleSelectedProduct = (id: string) => {
@@ -30,8 +31,12 @@ const MainView = () => {
     const fetchProducts = async () => {
       try {
         const productsData = await getProducts(10);
-        console.log("Products data:", productsData.data);
-        setProducts(productsData.data);
+        if (productsData.status === 200) {
+          // If the request is successful, set the products
+          setProducts(productsData.data as Product[]);
+        } else {
+          console.error("Error fetching products:", productsData.error);
+        }
       } catch (error) {
         console.error("Error fetching products:", error);
       }
