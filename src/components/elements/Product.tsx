@@ -9,8 +9,8 @@ const ProductComponent: React.FC<{ product: Product }> = ({ product }) => {
         height={100}
         src={product.image}
         alt={product.name}
-        priority
-        className="w-[150px] h-auto "
+        priority={true}
+        className="w-[150px] h-auto"
       />
       <div className="my-4 text-sm font-medium text-gray-900 w-full">
         <p>{product.name}</p>

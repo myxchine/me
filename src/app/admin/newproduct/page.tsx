@@ -14,6 +14,7 @@ const AddProductForm = () => {
     category: "",
     stock: 0,
     created_at: "",
+    slug: "",
   });
 
   const handleChange = (
@@ -90,6 +91,18 @@ const AddProductForm = () => {
           onChange={handleChange}
           required
           placeholder="Product category"
+          className="border border-gray-300 rounded px-2 py-1 w-full"
+        />
+      </div>
+      <div className="">
+        <input
+          type="text"
+          id="slug"
+          name="slug"
+          value={productData.slug}
+          onChange={handleChange}
+          required
+          placeholder="Product slug"
           className="border border-gray-300 rounded px-2 py-1 w-full"
         />
       </div>

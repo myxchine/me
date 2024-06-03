@@ -78,7 +78,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           quality={50}
           width={200}
           height={200}
-          className="mb-4 h-[350px] w-full object-cover"
+          className="mb-4 h-[350px] md:h-[500px] w-full object-cover border"
           priority
           style={{
             objectFit: "cover",

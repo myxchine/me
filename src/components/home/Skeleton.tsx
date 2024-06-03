@@ -12,11 +12,11 @@ const Skeleton: React.FC<SkeletonProps> = ({ number }) => {
   });
 
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 p-4 max-w-4xl mx-auto">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 p-4 max-w-4xl mx-auto">
       {loadingProducts.map((_, index: number) => (
         <div key={index} className="m-0">
-          <div className="w-full h-[170px] bg-black bg-opacity-10 animate-pulse" />
-          <div className="my-4 text-sm font-medium text-gray-900">
+          <div className="w-full h-[170px] md:h-[250px] bg-black bg-opacity-10 animate-pulse" />
+          <div className="my-4 ">
             <p className="h-[20px] bg-black bg-opacity-10 animate-pulse" />
             <p className="h-[20px] bg-black bg-opacity-10 animate-pulse" />
           </div>

@@ -37,28 +37,32 @@ const ProductGrid: React.FC<ProductGrid> = ({
   return (
     <>
       {!loading && (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-2 p-4 max-w-4xl mx-auto">
-          {products.map((product: Product) => (
-            <div key={product.id} className="">
-              <Link href={`home/store/product/${product.slug}`}>
-                <div>
-                  <Image
-                    width={150}
-                    height={200}
-                    src={product.image}
-                    alt={product.name}
-                    priority
-                    className="w-full h-[170px] object-cover"
-                  />
-                  <div className="my-4 text-sm font-medium text-gray-900">
-                    <p>{product.name}</p>
+        <div className="p-4 max-w-4xl mx-auto space-y-4">
+          <h1 className="font-bold text-xl">Featured</h1>
 
-                    <p>{product.price.toFixed(2)} EUR</p>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 max-w-4xl mx-auto">
+            {products.map((product: Product) => (
+              <div key={product.id} className="">
+                <Link href={`home/store/product/${product.slug}`}>
+                  <div>
+                    <Image
+                      width={150}
+                      height={200}
+                      src={product.image}
+                      alt={product.name}
+                      priority
+                      className="w-full h-[170px] md:h-[250px] object-cover border"
+                    />
+                    <div className="my-4 text-sm font-medium text-gray-900">
+                      <p>{product.name}</p>
+
+                      <p>{product.price.toFixed(2)} EUR</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </>
