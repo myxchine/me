@@ -80,10 +80,6 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
-  if (!window.localStorage) {
-    return <main></main>;
-  }
-
   return (
     <main className="flex flex-col items-center justify-center p-8 max-w-6xl mx-auto">
       <div className="w-full block pb-4">
