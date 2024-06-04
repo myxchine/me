@@ -1,60 +1,66 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useCallback } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
-  EmbeddedCheckout,
   EmbeddedCheckoutProvider,
+  EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
-import { Checkout } from "@/components/Checkout";
+import { Product } from "@/server/interface";
 
 const stripePromise = loadStripe(
-  "pk_test_51OQRELKa6s8gzuS52RU1hgZCM8uWSZjzAK0X9JL3vQB5Njxml8Ux5fl5DFeRM2Jn3KN0Gn54dYoD3alzwa86NqYn00Gr9htWMp"
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY?.toString() || ""
 );
 
-const CheckoutPage = () => {
-  const [clientSecret, setClientSecret] = useState<string | null>(null);
-
+export default function App() {
   const getCart = () => {
     if (typeof window !== "undefined" && window.localStorage) {
       const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-      return storedCart;
+
+      const lineItems = storedCart.map((product: Product) => ({
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: product.name,
+            images: [product.image],
+            description: product.description,
+          },
+          unit_amount: Math.round(product.price * 100),
+        },
+        quantity: product.quantity,
+      }));
+
+      console.log(lineItems);
+
+      return lineItems;
     }
     return [];
   };
 
-  useEffect(() => {
-    const cart = getCart();
+  const fetchClientSecret = useCallback(async () => {
+    const lineItems = getCart();
+    console.log("Creating Stripe checkout session...", lineItems);
 
-    if (cart.length > 0) {
-      const fetchClientSecret = async () => {
-        try {
-          const origin = window.location.origin;
-          const session = await Checkout(cart, origin);
-          setClientSecret(session.client_secret);
-          console.log("Stripe checkout session created:", session);
-        } catch (error) {
-          console.error("Error creating Stripe checkout session:", error);
-        }
-      };
-
-      fetchClientSecret();
-    }
+    return fetch("/api/checkout_sessions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Stripe-Version": "2020-08-27",
+      },
+      body: JSON.stringify({
+        lineItems,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => data.clientSecret);
   }, []);
 
-  const options = clientSecret ? { clientSecret } : {};
+  const options = { fetchClientSecret };
 
   return (
-    <main>
-      {clientSecret ? (
-        <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
-          <EmbeddedCheckout />
-        </EmbeddedCheckoutProvider>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </main>
+    <div id="checkout">
+      <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
+        <EmbeddedCheckout />
+      </EmbeddedCheckoutProvider>
+    </div>
   );
-};
-
-export default CheckoutPage;
+}

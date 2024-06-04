@@ -144,9 +144,12 @@ const Cart = () => {
             <p>TOTAL</p>
             <p>{totalPrice.toFixed(2)} EUR</p>
           </div>
-          <button className="bg-black border border-black text-white p-2 w-full mt-4 hover:bg-white hover:text-black">
-            Checkout
-          </button>
+          <Link href="/checkout">
+            <button className="bg-black border border-black text-white p-2 w-full mt-4 hover:bg-white hover:text-black">
+              Checkout
+            </button>
+          </Link>
+
           <Link href="/home/store">
             <button className="bg-white border border-black text-black p-2 w-full mt-4 hover:bg-black hover:text-white">
               Continue Shopping
