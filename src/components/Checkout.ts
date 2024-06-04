@@ -1,5 +1,3 @@
-"use server";
-
 import { stripe } from "@/utils/stripe";
 import { Product } from "@/server/interface";
 
