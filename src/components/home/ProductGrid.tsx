@@ -10,7 +10,7 @@ interface ProductGrid {
   number: number;
   loading: boolean;
   text: string;
-  setLoading: () => boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 const ProductGrid: React.FC<ProductGrid> = ({

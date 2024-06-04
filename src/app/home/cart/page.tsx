@@ -31,14 +31,14 @@ const Cart = () => {
     }
   }, []);
 
-  const removeFromCart = (productId: number) => {
+  const removeFromCart = (productId: string) => {
     const updatedCart = currentCart.filter(
       (product) => product.id !== productId
     );
     updateCart(updatedCart);
   };
 
-  const decreaseQuantity = (productId: number) => {
+  const decreaseQuantity = (productId: string) => {
     const updatedCart = currentCart.map((product) => {
       if (product.id === productId) {
         const newQuantity = Math.max(0, product.quantity - 1);
@@ -49,7 +49,7 @@ const Cart = () => {
     updateCart(updatedCart);
   };
 
-  const increaseQuantity = (productId: number) => {
+  const increaseQuantity = (productId: string) => {
     const updatedCart = currentCart.map((product) => {
       if (product.id === productId) {
         const newQuantity = product.quantity + 1;

@@ -74,10 +74,7 @@ const Header = () => {
               className="flex items-right justify-right p-2 relative"
             >
               {quantity > 0 && (
-                <div
-                  className="text-xs rounded-full w-5 h-5 flex items-center justiy-center text-center w-full font-bold  absolute top-[2px] right-[-5px]"
-                  style={{ transform: "scale(0.8)" }}
-                >
+                <div className="text-xs rounded-full w-5 h-5 flex items-center justiy-center text-center w-full font-bold  absolute top-0 right-8 h-[40px]">
                   <p className="w-full">{quantity}</p>
                 </div>
               )}
