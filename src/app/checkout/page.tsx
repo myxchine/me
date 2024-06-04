@@ -8,7 +8,7 @@ import {
 import { Product } from "@/server/interface";
 
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY?.toString() || ""
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
 
 export default function App() {
