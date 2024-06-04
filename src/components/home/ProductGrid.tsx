@@ -51,11 +51,11 @@ const ProductGrid: React.FC<ProductGrid> = ({
                 <Link href={`/home/store/product/${product.slug}`}>
                   <div>
                     <Image
-                      width={400}
-                      height={600}
+                      width={300}
+                      height={500}
                       src={product.image}
                       alt={product.name}
-                      quality={100}
+                      quality={66}
                       priority
                       //   className="w-full h-[170px] md:h-[250px] object-cover border"
                       className="w-full border"

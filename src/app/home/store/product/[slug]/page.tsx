@@ -94,9 +94,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         <Image
           src={product.image}
           alt={product.name}
-          quality={100}
-          width={400}
-          height={600}
+          quality={66}
+          width={300}
+          height={500}
           className="mb-4  w-full object-cover border"
           priority
         />

@@ -1,7 +1,6 @@
 "use client";
 
 import ProductGrid from "@/components/home/ProductGrid";
-import Hero from "@/components/home/Hero";
 import Skeleton from "@/components/home/Skeleton";
 import { useState } from "react";
 
