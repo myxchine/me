@@ -55,7 +55,7 @@ const MainView: React.FC = () => {
       <div className="w-full">
         <div className="w-full p-4 bg-white bg-opacity-50 rounded-lg space-y-4">
           <div className="flex justify-between items-center space-x-4">
-            <h1 className="text-xl font-bold uppercase">Home</h1>
+            <h1 className="text-xl font-bold uppercase">Products</h1>
           </div>
           <div className="space-x-4">
             <Link href="/admin/newproduct">

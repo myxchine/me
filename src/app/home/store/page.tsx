@@ -9,8 +9,13 @@ const Store = () => {
 
   return (
     <main className="">
-      {loading && <Skeleton number={4} />}
-      <ProductGrid number={4} loading={loading} setLoading={setLoading} text="Store" />
+      {loading && <Skeleton number={4} title={true} />}
+      <ProductGrid
+        number={4}
+        loading={loading}
+        setLoading={setLoading}
+        text="Store"
+      />
     </main>
   );
 };

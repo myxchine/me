@@ -74,11 +74,14 @@ const Header = () => {
               className="flex items-right justify-right p-2 relative"
             >
               {quantity > 0 && (
-                <div className="w-[24px] h-[24px font-bold border-b border-black">
-                  {quantity}
+                <div
+                  className="text-xs rounded-full w-5 h-5 flex items-center justiy-center text-center w-full font-bold  absolute top-[2px] right-[-5px]"
+                  style={{ transform: "scale(0.8)" }}
+                >
+                  <p className="w-full">{quantity}</p>
                 </div>
               )}
-              {quantity === 0 && <PiBagLight className="text-2xl" />}
+              <PiBagLight className="text-2xl" />
             </button>
           </Link>
         </div>

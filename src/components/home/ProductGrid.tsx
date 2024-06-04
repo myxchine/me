@@ -45,20 +45,20 @@ const ProductGrid: React.FC<ProductGrid> = ({
         <div className="p-8 max-w-4xl mx-auto space-y-4">
           <h3 className="font-bold text-xl">{text}</h3>
 
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2  max-w-5xl mx-auto">
             {products.map((product: Product) => (
               <div key={product.id} className="">
                 <Link href={`/home/store/product/${product.slug}`}>
                   <div>
                     <Image
-                      width={200}
-                      height={300}
+                      width={400}
+                      height={600}
                       src={product.image}
                       alt={product.name}
-                      quality={50}
+                      quality={100}
                       priority
-                      placeholder="empty"
-                      className="w-full h-[170px] md:h-[250px] object-cover border"
+                      //   className="w-full h-[170px] md:h-[250px] object-cover border"
+                      className="w-full border"
                     />
                     <div className="my-4 text-sm font-medium text-gray-900">
                       <p>{product.name}</p>

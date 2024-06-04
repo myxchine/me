@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Product } from "@/server/interface";
 import ProductElement from "@/components/elements/Product";
 import Link from "next/link";
+import { IoArrowBackOutline } from "react-icons/io5";
 
 const Cart = () => {
   const [currentCart, setCurrentCart] = useState<Product[]>([]);
@@ -79,10 +80,24 @@ const Cart = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   };
 
+  if (!window.localStorage) {
+    return <main></main>;
+  }
+
   return (
     <main className="flex flex-col items-center justify-center p-8 max-w-6xl mx-auto">
-      <div className="w-full block space-y-4">
-        <h1 className="text-xl font-bold uppercase">Cart</h1>
+      <div className="w-full block pb-4">
+        <Link href="/home/store">
+          <button className="flex items-centerw-full justify-left">
+            <IoArrowBackOutline className="text-2xl" />
+          </button>
+        </Link>
+      </div>
+
+      <div className="w-full block space-y-8">
+        <h1 className="text font-bold uppercase">
+          Your cart ({totalQuantity} items)
+        </h1>
 
         {currentCart.length === 0 ? (
           <p>Your cart is empty</p>
@@ -120,9 +135,19 @@ const Cart = () => {
           </ul>
         )}
 
-        <div>
-          <p>Total items: {totalQuantity}</p>
-          <p>Total price: ${totalPrice.toFixed(2)}</p>
+        <div className="mt-4">
+          <div className="flex justify-between text-sm uppercase">
+            <p>Subtotal</p>
+            <p>{totalPrice.toFixed(2)} EUR</p>
+          </div>
+          <div className="flex justify-between text-sm uppercase">
+            <p>SHIPPING</p>
+            <p className="">FREE</p>
+          </div>
+          <div className="flex justify-between text-md font-bold uppercase my-4">
+            <p>TOTAL</p>
+            <p>{totalPrice.toFixed(2)} EUR</p>
+          </div>
           <button className="bg-black border border-black text-white p-2 w-full mt-4 hover:bg-white hover:text-black">
             Checkout
           </button>

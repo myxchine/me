@@ -64,15 +64,16 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   if (!product) {
     return (
       <main className="max-w-xl mx-auto px-4 py-4">
-        <Link href="/home">
+        <Link href="/home/store">
           <button className="flex items-center pl-4">
             <IoArrowBackOutline className="text-2xl" />
           </button>
         </Link>
         <div className="px-4 py-8">
-          <div className="mb-4 h-[350px] bg-black bg-opacity-30 animate-pulse"></div>
+          <div className="mb-4 h-[450px] bg-black bg-opacity-30 animate-pulse"></div>
 
           <div className="h-[32px] bg-black bg-opacity-20 animate-pulse mt-8"></div>
+          <div className="h-[24px] bg-black bg-opacity-10 animate-pulse w-[300px] "></div>
 
           <div className="h-[24px] bg-black bg-opacity-10 animate-pulse w-[200px]  mt-4"></div>
 
@@ -84,7 +85,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="max-w-xl mx-auto px-4 py-4">
-      <Link href="/home">
+      <Link href="/home/store">
         <button className="flex items-center pl-4">
           <IoArrowBackOutline className="text-2xl" />
         </button>
@@ -93,16 +94,18 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         <Image
           src={product.image}
           alt={product.name}
-          quality={50}
-          width={200}
-          height={200}
-          className="mb-4 h-[350px] md:h-[500px] w-full object-cover border"
+          quality={100}
+          width={400}
+          height={600}
+          className="mb-4  w-full object-cover border"
           priority
-          style={{
-            objectFit: "cover",
-          }}
         />
-        <h1 className="body-inter mt-8 text-2xl ">{product.name}</h1>
+        <div>
+          <h1 className="body-inter mt-8 text-2xl ">{product.name}</h1>
+          <h2 className="body-inter  text-black text-opacity-50 ">
+            {product.description}
+          </h2>
+        </div>
 
         <p className="text-l body-inter mt-4">{product.price.toFixed(2)} EUR</p>
         <button

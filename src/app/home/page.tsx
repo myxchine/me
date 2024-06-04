@@ -10,13 +10,12 @@ const Home = () => {
 
   return (
     <main className="">
-      <Hero />
-      {loading && <Skeleton number={4} />}
+      {loading && <Skeleton number={4} title={false} />}
       <ProductGrid
         number={4}
         loading={loading}
         setLoading={setLoading}
-        text="Featured"
+        text=""
       />
     </main>
   );
