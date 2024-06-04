@@ -36,7 +36,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="flex flex-col  sticky top-0 z-10   bg-white sm:px-12 md:px-12 md:p-4 max-w-[1600px] mx-auto">
+    <header className="flex flex-col px-4  sticky top-0 z-10   bg-white sm:px-12 md:px-12 md:p-4 max-w-[1600px] mx-auto">
       <div className="flex items-center justify-between relative">
         <div className="mobile flex items-left justify-left md:hidden">
           {!isOpen && (
