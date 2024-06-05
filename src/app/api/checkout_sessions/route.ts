@@ -1,45 +1,31 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-export async function POST(req: NextApiRequest) {
-  const { lineItems } = req.body;
-
-  console.log("LINE ITEMS", lineItems);
-
+export async function POST(req: NextRequest) {
   try {
-    const session = await stripe.checkout.sessions.create({
+    const session = await req.json();
+
+    console.log("SESSION", session);
+    if (!session.return_url || typeof session.return_url !== "string") {
+      throw new Error("Invalid return_url");
+    }
+
+    const client = await stripe.checkout.sessions.create({
+      payment_method_types: session.payment_method_types,
+      line_items: session.line_items,
+      mode: session.mode,
+      billing_address_collection: session.billing_address_collection,
+      shipping_address_collection: session.shipping_address_collection,
+      return_url: session.return_url,
+      automatic_tax: session.automatic_tax,
       ui_mode: "embedded",
-      payment_method_types: ["card"],
-
-      billing_address_collection: "required",
-      shipping_address_collection: { allowed_countries: ["PT"] },
-      line_items: [
-        {
-          price_data: {
-            product_data: {
-              name: "test",
-              images: ["test"],
-              description: "test",
-            },
-            unit_amount: Math.round(100 * 100),
-
-            currency: "eur",
-          },
-
-          quantity: 100,
-        },
-      ],
-      mode: "payment",
-      return_url: `http://localhost:3000/return?session_id={CHECKOUT_SESSION_ID}`,
-      automatic_tax: { enabled: true },
     });
 
-    console.log("Stripe checkout session created:", session);
+    console.log("Stripe checkout session created:", client);
 
     return NextResponse.json(
-      { clientSecret: session.client_secret, res: req },
+      { clientSecret: client.client_secret },
       { status: 200 }
     );
   } catch (err) {
@@ -49,13 +35,11 @@ export async function POST(req: NextApiRequest) {
   }
 }
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   console.log(req);
 
-  let url = req.url;
-
-  const parsedUrl = new URL(url);
-  const sessionId = parsedUrl.searchParams.get("session_id");
+  const searchParams = req.nextUrl.searchParams;
+  const sessionId = searchParams.get("session_id");
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);

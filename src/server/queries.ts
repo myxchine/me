@@ -27,3 +27,18 @@ export const getProduct = async (slug: string) => {
     throw error;
   }
 };
+
+export const getOrders = async (limit: number) => {
+  try {
+    const data = await db
+      .from("orders")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(limit);
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+};

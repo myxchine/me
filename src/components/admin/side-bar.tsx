@@ -29,6 +29,12 @@ const Sidebar = () => {
           </li>
           <li
             className="py-2  cursor-pointer flex items-center"
+            onClick={() => navigate("/admin/orders")}
+          >
+            <CiDeliveryTruck className="text-2xl mr-4" /> ORDERS
+          </li>
+          <li
+            className="py-2  cursor-pointer flex items-center"
             onClick={() => navigate("/admin/products")}
           >
             <FaTags className="text-2xl mr-4" /> PRODUCTS
@@ -45,12 +51,7 @@ const Sidebar = () => {
           >
             <BsFillPeopleFill className="text-2xl mr-4" /> CUSTOMERS
           </li>
-          <li
-            className="py-2  cursor-pointer flex items-center"
-            onClick={() => navigate("/admin/orders")}
-          >
-            <CiDeliveryTruck className="text-2xl mr-4" /> ORDERS
-          </li>
+
           <li
             className="py-2  cursor-pointer flex items-center"
             onClick={() => navigate("/admin/account")}

@@ -93,28 +93,14 @@ interface ShippingDetails {
 }
 
 export interface Order {
-  id: string; // Unique identifier for the order
-  customerId: string; // ID of the customer who placed the order
-  items: OrderItem[]; // Array of order items
-  subtotal: number; // Subtotal cost of the order
-  tax: number; // Tax amount
-  shippingCost: number; // Shipping cost
-  total: number; // Total cost of the order
-  paymentDetails: PaymentDetails; // Payment details for the order
-  shippingDetails: ShippingDetails; // Shipping details for the order
-  status:
-    | "pending"
-    | "processing"
-    | "shipped"
-    | "delivered"
-    | "cancelled"
-    | "returned"; // Status of the order
-  createdAt: string; // Creation date of the order (ISO 8601 format)
-  updatedAt: string; // Last updated date of the order (ISO 8601 format)
-  notes?: string; // Optional notes for the order
-  customAttributes?: {
-    [key: string]: any; // Key-value pairs for custom attributes
-  };
+  customer_id: number;
+  customer_email: string;
+  customer_name: string;
+  stripe_transaction_id: string;
+  order_date: string;
+  total: number;
+  status: string;
+  // add any other columns you want to insert
 }
 
 export interface CartItem {

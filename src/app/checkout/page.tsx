@@ -19,14 +19,15 @@ export default function App() {
 
       const lineItems = storedCart.map((product: Product) => ({
         price_data: {
-          currency: "eur",
           product_data: {
             name: product.name,
-            images: [product.image],
             description: product.description,
           },
           unit_amount: Math.round(product.price * 100),
+
+          currency: "eur",
         },
+
         quantity: product.quantity,
       }));
 
@@ -48,7 +49,19 @@ export default function App() {
         "Stripe-Version": "2020-08-27",
       },
       body: JSON.stringify({
-        lineItems,
+        line_items: lineItems,
+        mode: "payment",
+        ui_mode: "embedded",
+        payment_method_types: ["card"],
+        billing_address_collection: "required",
+        shipping_address_collection: {
+          allowed_countries: ["PT"],
+        },
+        return_url:
+          "http://localhost:3000/return?session_id={CHECKOUT_SESSION_ID}",
+        automatic_tax: {
+          enabled: true,
+        },
       }),
     })
       .then((res) => res.json())

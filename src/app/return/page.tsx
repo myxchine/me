@@ -1,35 +1,46 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { stripe } from "@/utils/stripe";
+import { useState, useEffect } from "react";
+import getSession from "@/components/checkout/getSession";
+import { addOrder } from "@/server/utils";
 
 export default function Return() {
   const [status, setStatus] = useState(null);
   const [customerEmail, setCustomerEmail] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
-    console.log(sessionId);
 
-    fetch(`/api/checkout_sessions?session_id=${sessionId}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setStatus(data.status);
-        setCustomerEmail(data.customer_email);
-      });
-  }, []);
+    if (sessionId) {
+      console.log(sessionId);
 
-  useEffect(() => {
-    if (status === "open") {
-      router.push("/");
+      (async function fetchSession() {
+        try {
+          const session = await getSession(sessionId);
+          console.log(session);
+
+          const order = await addOrder(session);
+          console.log(order);
+        } catch (error) {
+          console.error("Error fetching session:", error);
+        }
+      })();
+
+      fetch(`/api/checkout_sessions?session_id=${sessionId}`, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setStatus(data.status);
+          setCustomerEmail(data.customer_email);
+        })
+        .catch((error) => {
+          console.error("Error fetching session:", error);
+        });
     }
-  }, [status, router]);
+  }, []);
 
   if (status === "complete") {
     return (
@@ -45,11 +56,3 @@ export default function Return() {
 
   return null;
 }
-
-/*
-
-
-
-   
-
- */
