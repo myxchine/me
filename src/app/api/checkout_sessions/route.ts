@@ -28,6 +28,9 @@ export async function POST(req: NextApiRequest) {
     const session = await stripe.checkout.sessions.create({
       ui_mode: "embedded",
       payment_method_types: ["card"],
+
+      billing_address_collection: "required",
+      shipping_address_collection: { allowed_countries: ["PT"] },
       line_items: [
         {
           price_data: {
@@ -62,11 +65,16 @@ export async function POST(req: NextApiRequest) {
   }
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextApiRequest) {
+  console.log(req);
+
+  let url = req.url;
+
+  const parsedUrl = new URL(url);
+  const sessionId = parsedUrl.searchParams.get("session_id");
+
   try {
-    const session = await stripe.checkout.sessions.retrieve(
-      req.query.session_id
-    );
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     return NextResponse.json({
       status: session.status,

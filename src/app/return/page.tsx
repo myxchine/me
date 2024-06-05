@@ -1,16 +1,19 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { stripe } from "@/utils/stripe";
 
 export default function Return() {
   const [status, setStatus] = useState(null);
   const [customerEmail, setCustomerEmail] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
+    console.log(sessionId);
 
     fetch(`/api/checkout_sessions?session_id=${sessionId}`, {
       method: "GET",
@@ -22,9 +25,11 @@ export default function Return() {
       });
   }, []);
 
-  if (status === "open") {
-    return redirect("/");
-  }
+  useEffect(() => {
+    if (status === "open") {
+      router.push("/");
+    }
+  }, [status, router]);
 
   if (status === "complete") {
     return (
@@ -40,3 +45,11 @@ export default function Return() {
 
   return null;
 }
+
+/*
+
+
+
+   
+
+ */
