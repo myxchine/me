@@ -2,27 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-import { Product } from "@/server/interface";
 
 export async function POST(req: NextApiRequest) {
-  const cartDetailsArray = Object.values(req);
+  const { lineItems } = req.body;
 
-  console.log(cartDetailsArray);
-
-  const lineItems = cartDetailsArray.map((product: Product) => ({
-    price_data: {
-      currency: "eur",
-      product_data: {
-        name: product.name,
-        images: [product.image],
-        description: product.description,
-      },
-      unit_amount: Math.round(product.price * 100),
-    },
-    quantity: product.quantity,
-  }));
-
-  console.log(lineItems);
+  console.log("LINE ITEMS", lineItems);
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -55,7 +39,7 @@ export async function POST(req: NextApiRequest) {
     console.log("Stripe checkout session created:", session);
 
     return NextResponse.json(
-      { clientSecret: session.client_secret },
+      { clientSecret: session.client_secret, res: req },
       { status: 200 }
     );
   } catch (err) {
