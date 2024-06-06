@@ -72,7 +72,7 @@ const Header = () => {
               alt="Duality Logo"
               width={200}
               height={200}
-              className="w-[100px] h-auto object-contain py-4"
+              className="w-auto h-[55px] object-contain py-4"
             />
           </Link>
           <div className="md:w-[310px] flex items-center justify-end">
