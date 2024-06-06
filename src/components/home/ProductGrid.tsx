@@ -43,7 +43,7 @@ const ProductGrid: React.FC<ProductGrid> = ({
     <>
       {!loading && (
         <div className="p-8 max-w-4xl mx-auto space-y-4">
-          <h3 className="font-bold text-xl">{text}</h3>
+          <h2 className="font-bold text-xl">{text}</h2>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2  max-w-5xl mx-auto">
             {products.map((product: Product) => (
@@ -51,11 +51,11 @@ const ProductGrid: React.FC<ProductGrid> = ({
                 <Link href={`/home/store/product/${product.slug}`}>
                   <div>
                     <Image
-                      width={300}
-                      height={500}
+                      width={250}
+                      height={400}
                       src={product.image}
                       alt={product.name}
-                      quality={66}
+                      quality={70}
                       priority
                       //   className="w-full h-[170px] md:h-[250px] object-cover border"
                       className="w-full border"

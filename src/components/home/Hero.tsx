@@ -7,10 +7,9 @@ const Hero = () => {
       <Image
         src="/imagens/shiba/home/portrait.jpg"
         alt="hero"
-        width={700}
+        width={400}
         quality={50}
-        height={500}
-        placeholder="empty"
+        height={400}
         className="h-[300px] md:h-[400px] lg:h-[500px] w-full object-cover md:pb-4"
         priority
       />
