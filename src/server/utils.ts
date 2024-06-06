@@ -12,7 +12,7 @@ export const addProduct = async (formData: Product) => {
       image: formData.image,
       category: formData.category,
       stock: formData.stock,
-      sluge: formData.slug,
+      slug: formData.slug,
     },
   ]);
   if (error) {

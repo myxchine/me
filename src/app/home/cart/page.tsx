@@ -91,71 +91,71 @@ const Cart = () => {
       </div>
 
       <div className="w-full block space-y-8">
-        <h1 className="text font-bold uppercase">
-          Your cart ({totalQuantity} items)
-        </h1>
-
         {currentCart.length === 0 ? (
           <p>Your cart is empty</p>
         ) : (
-          <ul>
-            {currentCart.map((product) => (
-              <li key={product.id} className="w-full">
-                <ul className="w-full flex  mb-4">
-                  <ProductElement product={product} />
-                  <div className=" flex flex-col justify-between items-center items-middle align-middle">
+          <div>
+            <h1 className="text font-bold uppercase">
+              Your cart ({totalQuantity} items)
+            </h1>
+            <ul>
+              {currentCart.map((product) => (
+                <li key={product.id} className="w-full">
+                  <ul className="w-full flex  mb-4">
+                    <ProductElement product={product} />
+                    <div className=" flex flex-col justify-between items-center items-middle align-middle">
+                      <button
+                        className="p-2 mt-4  bg-black text-white hover:bg-white hover:text-black  text-xl border rounded w-[40px] justify-center"
+                        onClick={() => increaseQuantity(product.id)}
+                      >
+                        +
+                      </button>
+                      <button
+                        className="p-2 mb-4 bg-black text-white hover:bg-white hover:text-black text-xl border rounded  w-[40px]"
+                        onClick={() => decreaseQuantity(product.id)}
+                      >
+                        -
+                      </button>
+                    </div>
+                  </ul>
+                  {product.quantity === 0 && (
                     <button
-                      className="p-2 mt-4  bg-black text-white hover:bg-white hover:text-black  text-xl border rounded w-[40px] justify-center"
-                      onClick={() => increaseQuantity(product.id)}
+                      className="p-2 mb-4 bg-black text-white hover:bg-white hover:text-black text-sm border rounded  w-full"
+                      onClick={() => removeFromCart(product.id)}
                     >
-                      +
+                      Remove
                     </button>
-                    <button
-                      className="p-2 mb-4 bg-black text-white hover:bg-white hover:text-black text-xl border rounded  w-[40px]"
-                      onClick={() => decreaseQuantity(product.id)}
-                    >
-                      -
-                    </button>
-                  </div>
-                </ul>
-                {product.quantity === 0 && (
-                  <button
-                    className="p-2 mb-4 bg-black text-white hover:bg-white hover:text-black text-sm border rounded  w-full"
-                    onClick={() => removeFromCart(product.id)}
-                  >
-                    Remove
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-4">
+              <div className="flex justify-between text-sm uppercase">
+                <p>Subtotal</p>
+                <p>{totalPrice.toFixed(2)} EUR</p>
+              </div>
+              <div className="flex justify-between text-sm uppercase">
+                <p>SHIPPING</p>
+                <p className="">FREE</p>
+              </div>
+              <div className="flex justify-between text-md font-bold uppercase my-4">
+                <p>TOTAL</p>
+                <p>{totalPrice.toFixed(2)} EUR</p>
+              </div>
+              <Link href="/checkout">
+                <button className="bg-black border border-black text-white p-2 w-full mt-4 hover:bg-white hover:text-black">
+                  Checkout
+                </button>
+              </Link>
+            </div>
+          </div>
         )}
-
-        <div className="mt-4">
-          <div className="flex justify-between text-sm uppercase">
-            <p>Subtotal</p>
-            <p>{totalPrice.toFixed(2)} EUR</p>
-          </div>
-          <div className="flex justify-between text-sm uppercase">
-            <p>SHIPPING</p>
-            <p className="">FREE</p>
-          </div>
-          <div className="flex justify-between text-md font-bold uppercase my-4">
-            <p>TOTAL</p>
-            <p>{totalPrice.toFixed(2)} EUR</p>
-          </div>
-          <Link href="/checkout">
-            <button className="bg-black border border-black text-white p-2 w-full mt-4 hover:bg-white hover:text-black">
-              Checkout
-            </button>
-          </Link>
-
-          <Link href="/home/store">
-            <button className="bg-white border border-black text-black p-2 w-full mt-4 hover:bg-black hover:text-white">
-              Continue Shopping
-            </button>
-          </Link>
-        </div>
+        <Link href="/home/store">
+          <button className="bg-white border border-black text-black p-2 w-full mt-4 hover:bg-black hover:text-white">
+            Continue Shopping
+          </button>
+        </Link>
       </div>
     </main>
   );

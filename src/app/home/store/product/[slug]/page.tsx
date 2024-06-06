@@ -102,15 +102,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         />
         <div>
           <h1 className="body-inter mt-8 text-2xl ">{product.name}</h1>
-          <h2 className="body-inter  text-black text-opacity-50 ">
+          <p className="body-inter  text-black text-opacity-80 text-sm mt-4">
             {product.description}
-          </h2>
+          </p>
         </div>
 
         <p className="text-l body-inter mt-4">{product.price.toFixed(2)} EUR</p>
         <button
           onClick={() => handleAddToCart(product)}
-          className="body-inter text mt-6 w-full border border-black bg-black p-4 text-white hover:bg-white hover:text-black"
+          className="body-inter text mt-6 w-full border border-black bg-black p-2 text-white hover:bg-white hover:text-black rounded"
         >
           ADD TO CART
         </button>

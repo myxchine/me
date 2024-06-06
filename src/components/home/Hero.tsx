@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center justify-center p-4 pb-0 md:pb-4 md:pt-0 max-w-[1600px] mx-auto">
+    <div className="flex flex-col md:flex-row items-center justify-center p-4 pb-0 md:pb-4  max-w-[1100px] mx-auto md:py-8">
       <Image
-        src="/images/hero.webp"
+        src="/imagens/shiba/home/portrait.jpg"
         alt="hero"
         width={700}
         quality={50}
@@ -16,10 +16,9 @@ const Hero = () => {
       />
 
       <div className="w-full text-center space-y-4 p-4">
-        <h1 className="text-2xl font-bold">BRINGING SPEED & EFFIECENCY</h1>
-        <p className="text-sm px-4 text-center text-black text-opacity-50">
-          The digital commerce solution you've been looking for
-        </p>
+        <h1 className="text-xl font-bold">
+          INSPIRADO EM CABRAS DESENHADO PARA PILOTOS
+        </h1>
 
         <div className="flex space-x-4 items-center justify-center  w-full p-4">
           <Link href="/home/store">
@@ -29,7 +28,7 @@ const Hero = () => {
           </Link>
           <Link href="/home/about">
             <button className="border border-black p-2 px-6 w-[120px] text-sm hover:bg-black hover:text-white">
-              ABOUT
+              SOBRE
             </button>
           </Link>
         </div>

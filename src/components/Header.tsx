@@ -8,6 +8,7 @@ import MobileMenu from "@/components/menu/Mobile";
 import Nav from "@/components/menu/Nav";
 import Link from "next/link";
 import { Product } from "@/server/interface";
+import Image from "next/image";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,54 +37,62 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="flex flex-col px-4  sticky top-0 z-10   bg-white sm:px-12 md:px-12 md:p-4 max-w-[1600px] mx-auto">
-      <div className="flex items-center justify-between relative">
-        <div className="mobile flex items-left justify-left md:hidden">
-          {!isOpen && (
-            <button
-              aria-label="Mobile Menu Open"
-              onClick={handleOpen}
-              className="flex items-center justify-center p-2"
-            >
-              <HiOutlineMenuAlt4 className=" text-xl h-[24px] w-[24px] flex items-left justify-left" />
-            </button>
-          )}
+    <header className="w-full sticky top-0 z-10 ">
+      <div className="flex flex-col px-4    bg-white sm:px-12 md:px-12 md:p-4 max-w-[1600px] mx-auto">
+        <div className="flex items-center justify-between relative">
+          <div className="mobile flex items-left justify-left md:hidden">
+            {!isOpen && (
+              <button
+                aria-label="Mobile Menu Open"
+                onClick={handleOpen}
+                className="flex items-center justify-center p-2"
+              >
+                <HiOutlineMenuAlt4 className=" text-xl h-[24px] w-[24px] flex items-left justify-left" />
+              </button>
+            )}
 
-          {isOpen && (
-            <button
-              aria-label="Mobile Menu Close"
-              className="flex items-center justify-center p-2"
-              onClick={handleClose}
-            >
-              <TfiClose className="p-[3px] text-xl h-[24px] w-[24px] flex items-left justify-left" />
-            </button>
-          )}
-        </div>
+            {isOpen && (
+              <button
+                aria-label="Mobile Menu Close"
+                className="flex items-center justify-center p-2"
+                onClick={handleClose}
+              >
+                <TfiClose className="p-[3px] text-xl h-[24px] w-[24px] flex items-left justify-left" />
+              </button>
+            )}
+          </div>
 
-        <div className="flex items-center justify-between hidden md:flex md:w-[310px]">
-          <Nav />
-        </div>
+          <div className="flex items-center justify-between hidden md:flex md:w-[310px]">
+            <Nav />
+          </div>
 
-        <Link href="/home">
-          <div className="font-bold text-xl">DUALITY</div>
-        </Link>
-        <div className="md:w-[310px] flex items-center justify-end">
-          <Link href="/home/cart">
-            <button
-              aria-label="Shopping Cart"
-              className="flex items-right justify-right p-2 relative"
-            >
-              {quantity > 0 && (
-                <div className="text-xs rounded-full w-5 h-5 flex items-center justiy-center text-center w-full font-bold  absolute top-0 right-5 h-[40px]">
-                  <p className="w-full">{quantity}</p>
-                </div>
-              )}
-              <PiBagLight className="text-2xl" />
-            </button>
+          <Link href="/home">
+            <Image
+              src="/imagens/shiba/cabra-logo.png"
+              alt="Duality Logo"
+              width={200}
+              height={200}
+              className="w-[100px] h-auto object-contain py-4"
+            />
           </Link>
+          <div className="md:w-[310px] flex items-center justify-end">
+            <Link href="/home/cart">
+              <button
+                aria-label="Shopping Cart"
+                className="flex items-right justify-right p-2 relative"
+              >
+                {quantity > 0 && (
+                  <div className="text-xs rounded-full w-5 h-5 flex items-center justiy-center text-center w-full font-bold  absolute top-0 right-5 h-[40px]">
+                    <p className="w-full">{quantity}</p>
+                  </div>
+                )}
+                <PiBagLight className="text-2xl" />
+              </button>
+            </Link>
+          </div>
         </div>
+        {isOpen && <MobileMenu />}
       </div>
-      {isOpen && <MobileMenu />}
     </header>
   );
 };

@@ -71,7 +71,7 @@ export default function App() {
   const options = { fetchClientSecret };
 
   return (
-    <main id="checkout">
+    <main id="checkout" className="md:pt-4">
       <Header />
       <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
         <EmbeddedCheckout />
