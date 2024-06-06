@@ -95,23 +95,23 @@ const Cart = () => {
           <p>Your cart is empty</p>
         ) : (
           <div>
-            <h1 className="text font-bold uppercase">
+            <h1 className="text font-bold uppercase pb-4">
               Your cart ({totalQuantity} items)
             </h1>
             <ul>
               {currentCart.map((product) => (
                 <li key={product.id} className="w-full">
-                  <ul className="w-full flex  mb-4">
+                  <ul className="w-full flex  mb-8">
                     <ProductElement product={product} />
                     <div className=" flex flex-col justify-between items-center items-middle align-middle">
                       <button
-                        className="p-2 mt-4  bg-black text-white hover:bg-white hover:text-black  text-xl border rounded w-[40px] justify-center"
+                        className="p-2 mt-4  text-xl  rounded w-[40px] justify-center"
                         onClick={() => increaseQuantity(product.id)}
                       >
                         +
                       </button>
                       <button
-                        className="p-2 mb-4 bg-black text-white hover:bg-white hover:text-black text-xl border rounded  w-[40px]"
+                        className="p-2 mb-4  text-xl  rounded  w-[40px]"
                         onClick={() => decreaseQuantity(product.id)}
                       >
                         -
@@ -130,7 +130,7 @@ const Cart = () => {
               ))}
             </ul>
 
-            <div className="mt-4">
+            <div className="mt-4 border-t border-gray-300 pt-8">
               <div className="flex justify-between text-sm uppercase">
                 <p>Subtotal</p>
                 <p>{totalPrice.toFixed(2)} EUR</p>

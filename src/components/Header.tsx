@@ -91,7 +91,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        {isOpen && <MobileMenu />}
+        {isOpen && <MobileMenu handleClose={handleClose} />}
       </div>
     </header>
   );
