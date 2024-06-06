@@ -58,7 +58,7 @@ export default function App() {
           allowed_countries: ["PT"],
         },
         return_url:
-          "http://localhost:3000/return?session_id={CHECKOUT_SESSION_ID}",
+          "https://duality-commerce.vercel.app/return?session_id={CHECKOUT_SESSION_ID}",
         automatic_tax: {
           enabled: true,
         },

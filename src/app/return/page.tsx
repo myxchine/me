@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import getSession from "@/components/checkout/getSession";
 import { addOrder } from "@/server/utils";
+import Header from "@/components/checkout/Header";
 
 export default function Return() {
   const [status, setStatus] = useState(null);
@@ -43,13 +44,18 @@ export default function Return() {
   }, []);
 
   if (status === "complete") {
+    localStorage.removeItem("cart"); // Clear the cart
     return (
       <section id="success">
-        <p>
-          We appreciate your business! A confirmation email will be sent to{" "}
-          {customerEmail}. If you have any questions, please email{" "}
-          <a href="mailto:orders@example.com">orders@example.com</a>.
-        </p>
+        <Header />
+        <div className="p-4 pt-12">
+          <h1 className="text-3xl font-bold pb-8">Thank you for your order!</h1>
+          A confirmation email will be sent to {customerEmail}.
+          <p className="pt-4">
+            If you have any questions, please email{" "}
+            <a href="mailto:michael@duality.agency">michael@duality.agency</a>.
+          </p>
+        </div>
       </section>
     );
   }
