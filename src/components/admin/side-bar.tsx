@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar hidden md:block w-80  bg-white bg-opacity-90 text-black  text-xs sticky  border-r border-gray-300  ">
       <div className="flex items-center justify-between border-b border-gray-200 p-4 h-[80px]">
-        <h2 className="text-2xl font-bold ">COMMERCE</h2>
+        <h2 className="text-2xl font-bold ">DUALITY</h2>
       </div>
       <div className="p-4 space-y-8">
         <ul className="space-y-2">

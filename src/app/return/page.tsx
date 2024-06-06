@@ -44,7 +44,7 @@ export default function Return() {
   }, []);
 
   if (status === "complete") {
-    localStorage.removeItem("cart"); // Clear the cart
+    localStorage.removeItem("cart");
     return (
       <section id="success">
         <Header />

@@ -59,14 +59,6 @@ const MainView: React.FC = () => {
             <h1 className="text-xl font-bold uppercase">Orders</h1>
           </div>
           <div className="space-x-4">
-            <Link href="/admin/newproduct">
-              <button className="text-black text-opacity-100 hover:text-red rounded border border-gray-300 p-2">
-                <div className="flex justify-center items-center space-x-2">
-                  <IoMdAddCircleOutline />
-                  <p className="text-xs">New Order</p>
-                </div>
-              </button>
-            </Link>
             {selectedProducts.length > 0 && (
               <button
                 className="text-black text-opacity-100 hover:text-red rounded border border-gray-300 p-2"
