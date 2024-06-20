@@ -5,7 +5,7 @@ import { deleteOrder } from "@/server/db/utils";
 import { getOrders } from "@/server/db/queries";
 import { FiTrash } from "react-icons/fi";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { Order } from "@/server/interface";
+import { Order } from "@/types/order";
 import Link from "next/link";
 
 const MainView: React.FC = () => {

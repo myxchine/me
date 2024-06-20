@@ -5,7 +5,7 @@ import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
-import { Product } from "@/server/interface";
+import { Product } from "@/types/product";
 import Header from "@/components/checkout/Header";
 
 const stripePromise = loadStripe(

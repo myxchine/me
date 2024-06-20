@@ -26,3 +26,20 @@ export const products = createTable("products", {
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
+
+export const orders = createTable("orders", {
+  id: uuid("id")
+    .primaryKey()
+    .default(sql`gen_random_uuid()`),
+  customer_id: integer("customer_id").notNull(),
+  customer_email: varchar("customer_email", { length: 256 }).notNull(),
+  customer_name: varchar("customer_name", { length: 256 }).notNull(),
+  stripe_transaction_id: varchar("stripe_transaction_id", {
+    length: 256,
+  }).notNull(),
+  order_date: timestamp("order_date").defaultNow().notNull(),
+  total: numeric("total").notNull(),
+  status: varchar("status", { length: 256 }).notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});

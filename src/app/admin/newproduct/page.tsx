@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { Product } from "@/server/interface";
-import { addProduct } from "@/server/utils";
+import { useState } from "react";
+import { Product } from "@/types/product";
+import { addProduct } from "@/server/db/utils";
 import { IoArrowBackOutline } from "react-icons/io5";
 import Link from "next/link";
 
@@ -12,10 +12,11 @@ const AddProductForm = () => {
     name: "",
     description: "",
     price: 0,
-    image: "",
+    image: [],
     category: "",
     stock: 0,
     created_at: "",
+
     slug: "",
   });
 
@@ -38,7 +39,7 @@ const AddProductForm = () => {
       name: "",
       description: "",
       price: 0,
-      image: "",
+      image: [],
       category: "",
       stock: 0,
       created_at: "",
