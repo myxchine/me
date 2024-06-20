@@ -1,6 +1,6 @@
 "use server";
 
-import { stripe } from "@/utils/stripe";
+import { stripe } from "@/stripe";
 
 const getSession = async (id: string) => {
   try {

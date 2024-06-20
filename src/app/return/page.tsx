@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import getSession from "@/components/checkout/getSession";
-import { addOrder } from "@/server/utils";
+import { addOrder } from "@/server/db/utils";
 import Header from "@/components/checkout/Header";
 
 export default function Return() {
