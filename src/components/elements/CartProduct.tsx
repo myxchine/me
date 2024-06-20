@@ -1,4 +1,4 @@
-import { Product } from "@/server/interface";
+import { Product } from "@/types/product";
 import Image from "next/image";
 
 const ProductComponent: React.FC<{ product: Product }> = ({ product }) => {
@@ -7,7 +7,7 @@ const ProductComponent: React.FC<{ product: Product }> = ({ product }) => {
       <Image
         width={100}
         height={200}
-        src={product.image}
+        src={product.image[0]}
         alt={product.name}
         priority={true}
         className="w-[250px] h-auto border"
@@ -15,7 +15,7 @@ const ProductComponent: React.FC<{ product: Product }> = ({ product }) => {
       <div className="my-4 text-sm font-medium text-gray-900 w-full">
         <p>{product.name}</p>
 
-        <p>${product.price.toFixed(2)}</p>
+        <p>${product.price}</p>
         <p>x{product.quantity}</p>
       </div>
     </div>

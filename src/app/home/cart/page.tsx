@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Product } from "@/server/interface";
-import ProductElement from "@/components/elements/Product";
+import { Product } from "@/types/product";
+import ProductElement from "@/components/elements/CartProduct";
 import Link from "next/link";
 import { IoArrowBackOutline } from "react-icons/io5";
 
@@ -133,7 +133,7 @@ const Cart = () => {
             <div className="mt-4 border-t border-gray-300 pt-8">
               <div className="flex justify-between text-sm uppercase">
                 <p>Subtotal</p>
-                <p>{totalPrice.toFixed(2)} EUR</p>
+                <p>{totalPrice} EUR</p>
               </div>
               <div className="flex justify-between text-sm uppercase">
                 <p>SHIPPING</p>
@@ -141,7 +141,7 @@ const Cart = () => {
               </div>
               <div className="flex justify-between text-md font-bold uppercase my-4">
                 <p>TOTAL</p>
-                <p>{totalPrice.toFixed(2)} EUR</p>
+                <p>{totalPrice} EUR</p>
               </div>
               <Link href="/checkout">
                 <button className="bg-black border border-black text-white p-2 w-full mt-4 hover:bg-white hover:text-black">

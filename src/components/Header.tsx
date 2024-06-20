@@ -7,7 +7,7 @@ import { PiBagLight } from "react-icons/pi";
 import MobileMenu from "@/components/menu/Mobile";
 import Nav from "@/components/menu/Nav";
 import Link from "next/link";
-import { Product } from "@/server/interface";
+import { Product } from "@/types/product";
 import Image from "next/image";
 
 const Header = () => {

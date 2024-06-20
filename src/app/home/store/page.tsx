@@ -1,23 +1,13 @@
-"use client";
+import ProductGrid from "@/components/ui/ProductGrid";
+import { getProducts } from "@/server/db/queries";
+export const dynamic = "force-dynamic";
 
-import ProductGrid from "@/components/home/ProductGrid";
-import Skeleton from "@/components/home/Skeleton";
-import { useState } from "react";
-
-const Store = () => {
-  const [loading, setLoading] = useState(true);
+export default async function Store() {
+  const products = await getProducts();
 
   return (
-    <main className="">
-      {loading && <Skeleton number={4} title={true} />}
-      <ProductGrid
-        number={4}
-        loading={loading}
-        setLoading={setLoading}
-        text="Store"
-      />
-    </main>
+    <div>
+      <ProductGrid text="Store" products={products} />
+    </div>
   );
-};
-
-export default Store;
+}
