@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { deleteProduct } from "@/server/utils";
-import { getProducts } from "@/server/queries";
+import { deleteProduct } from "@/server/db/utils";
+import { getProducts } from "@/server/db/queries";
 import { FiTrash } from "react-icons/fi";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { Product } from "@/server/interface";
+import { Product } from "@/types/product";
 import Link from "next/link";
 
 const MainView: React.FC = () => {
@@ -55,7 +55,7 @@ const MainView: React.FC = () => {
       <div className="w-full">
         <div className="w-full p-4 bg-white bg-opacity-50 rounded-lg space-y-4">
           <div className="flex justify-between items-center space-x-4">
-            <h1 className="text-xl font-bold uppercase">Products</h1>
+            <h1 className="text-xl font-bold uppercase">Home</h1>
           </div>
           <div className="space-x-4">
             <Link href="/admin/newproduct">
@@ -104,7 +104,7 @@ const MainView: React.FC = () => {
                       <td className="p-4">
                         {truncateText(product.description, 20)}
                       </td>
-                      <td className="p-4">€{product.price}</td>
+                      <td className="p-4">{product.price}</td>
                       <td className="p-4">{product.stock}</td>
                       <td className="p-4">
                         <input

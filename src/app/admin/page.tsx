@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { deleteProduct } from "@/server/utils";
-import { getProducts } from "@/server/queries";
+import { deleteProduct } from "@/server/db/utils";
+import { getProducts } from "@/server/db/queries";
 import { FiTrash } from "react-icons/fi";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { Product } from "@/server/interface";
+import { Product } from "@/types/product";
 import Link from "next/link";
 
 const MainView: React.FC = () => {

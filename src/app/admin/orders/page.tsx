@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { deleteOrder } from "@/server/utils";
-import { getOrders } from "@/server/queries";
+import { deleteOrder } from "@/server/db/utils";
+import { getOrders } from "@/server/db/queries";
 import { FiTrash } from "react-icons/fi";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { Order } from "@/server/interface";
